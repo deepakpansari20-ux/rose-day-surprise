@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rose Day Surprise for Mahi</title>
+    <style>
+        body { margin: 0; background: #000; overflow: hidden; display: flex; justify-content: center; align-items: center; height: 100vh; font-family: 'Arial', sans-serif; }
+        .card { text-align: center; z-index: 10; background: rgba(0,0,0,0.7); padding: 30px; border-radius: 20px; border: 2px solid #ff4d6d; box-shadow: 0 0 20px #ff4d6d; max-width: 80%; }
+        .mahi-photo { width: 150px; height: 150px; border-radius: 50%; border: 3px solid #ff4d6d; margin-bottom: 15px; object-fit: cover; }
+        h1 { color: #ff4d6d; font-size: 2em; margin: 10px 0; }
+        p { color: #fff; font-size: 1.1em; }
+        .btn { background: #ff4d6d; color: white; border: none; padding: 10px 20px; border-radius: 50px; cursor: pointer; font-size: 1em; margin-top: 15px; }
+        .rose { position: absolute; top: -10%; animation: fall linear infinite; font-size: 25px; }
+        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <img src="https://via.placeholder.com/150" class="mahi-photo" alt="Mahi">
+        <h1>Happy Rose Day, Mahi! 🌹</h1>
+        <p>हज़ारों गुलाबों में भी जो सबसे प्यारा है,<br>वो खूबसूरत चेहरा सिर्फ तुम्हारा है।</p>
+        
+        <button class="btn" onclick="playMusic()">सुनिए माही... 🎵</button>
+        <audio id="bgMusic" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <script>
+        function playMusic() {
+            var audio = document.getElementById("bgMusic");
+            audio.play();
+        }
+        function createRose() {
+            const rose = document.createElement('div');
+            rose.classList.add('rose');
+            rose.innerHTML = '🌹';
+            rose.style.left = Math.random() * 100 + 'vw';
+            rose.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(rose);
+            setTimeout(() => { rose.remove(); }, 5000);
+        }
+        setInterval(createRose, 300);
+    </script>
+</body>
+</html>
